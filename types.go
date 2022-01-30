@@ -352,17 +352,18 @@ type FlashbotsCallBundleParam struct {
 }
 
 type FlashbotsCallBundleResult struct {
-	CoinbaseDiff      string `json:"coinbaseDiff"`      // "2717471092204423",
-	EthSentToCoinbase string `json:"ethSentToCoinbase"` // "0",
-	FromAddress       string `json:"fromAddress"`       // "0x37ff310ab11d1928BB70F37bC5E3cf62Df09a01c",
-	GasFees           string `json:"gasFees"`           // "2717471092204423",
-	GasPrice          string `json:"gasPrice"`          // "43000001459",
-	GasUsed           int64  `json:"gasUsed"`           // 63197,
-	ToAddress         string `json:"toAddress"`         // "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-	TxHash            string `json:"txHash"`            // "0xe2df005210bdc204a34ff03211606e5d8036740c686e9fe4e266ae91cf4d12df",
-	Value             string `json:"value"`             // "0x"
-	Error             string `json:"error"`
-	Revert            string `json:"revert"`
+	CoinbaseDiff      string           `json:"coinbaseDiff"`      // "2717471092204423",
+	EthSentToCoinbase string           `json:"ethSentToCoinbase"` // "0",
+	FromAddress       string           `json:"fromAddress"`       // "0x37ff310ab11d1928BB70F37bC5E3cf62Df09a01c",
+	GasFees           string           `json:"gasFees"`           // "2717471092204423",
+	GasPrice          string           `json:"gasPrice"`          // "43000001459",
+	GasUsed           int64            `json:"gasUsed"`           // 63197,
+	ToAddress         string           `json:"toAddress"`         // "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+	TxHash            string           `json:"txHash"`            // "0xe2df005210bdc204a34ff03211606e5d8036740c686e9fe4e266ae91cf4d12df",
+	Value             string           `json:"value"`             // "0x"
+	Error             string           `json:"error"`
+	Revert            string           `json:"revert"`
+	Logs              []CallBundleLogs `json:"logs"`
 }
 
 type FlashbotsCallBundleResponse struct {
@@ -375,6 +376,20 @@ type FlashbotsCallBundleResponse struct {
 	StateBlockNumber  int64                       `json:"stateBlockNumber"`  // 12960319,
 	TotalGasUsed      int64                       `json:"totalGasUsed"`      // 63197
 }
+
+type CallBundleLog struct {
+	Address          string   `json:"address"`
+	Topics           []string `json:"topics"`
+	Data             string   `json:"data"`
+	BlockNumber      string   `json:"blockNumber"`
+	TransactionHash  string   `json:"transactionHash"`
+	TransactionIndex string   `json:"transactionIndex"`
+	BlockHash        string   `json:"blockHash"`
+	LogIndex         string   `json:"logIndex"`
+	Removed          bool     `json:"removed"`
+}
+
+type CallBundleLogs []CallBundleLog
 
 // sendBundle
 type FlashbotsSendBundleRequest struct {
