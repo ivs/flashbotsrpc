@@ -1,4 +1,4 @@
-module github.com/ifhbr0/flashbotsrpc
+module github.com/ivs/flashbotsrpc
 
 go 1.16
 
